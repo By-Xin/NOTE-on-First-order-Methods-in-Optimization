@@ -1,0 +1,80 @@
+\usepackage[
+  b5paper,
+  top=23mm,
+  bottom=25mm,
+  inner=23mm,
+  outer=23mm,
+  headheight=14pt,
+  headsep=7mm
+]{geometry}
+
+\definecolor{ink}{HTML}{111111}
+\definecolor{muted}{HTML}{666666}
+\definecolor{rulegray}{HTML}{8A8A8A}
+\definecolor{softgray}{HTML}{F7F7F7}
+\definecolor{accent}{HTML}{35308A}
+\definecolor{greenaccent}{HTML}{3F7D3E}
+\definecolor{theoremback}{HTML}{F7FCFC}
+\definecolor{exampleback}{HTML}{FFFEFE}
+\definecolor{exerciseback}{HTML}{F8F8F8}
+
+\AtBeginDocument{\zihao{-5}\color{ink}}
+\raggedbottom
+\linespread{1.04}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.12em}
+\setlist{nosep,leftmargin=2em}
+\setlist[description]{
+  font=\normalfont\ttfamily,
+  labelwidth=28mm,
+  labelsep=4mm,
+  leftmargin=32mm,
+  itemsep=0.45em
+}
+
+% 图像搜索路径不能使用通配符。新增章节时，手动追加 {chapN/figure/}。
+\graphicspath{
+  {chap0/figure/}
+  {flg/}
+  {chap1/figure/}
+  {chap2/figure/}
+}
+
+\ctexset{
+  chapter = {
+    format = \normalfont\huge\bfseries,
+    name = {,},
+    number = {\textcolor{accent}{\fontsize{46}{46}\selectfont\arabic{chapter}}},
+    aftername = \quad,
+    beforeskip = 18pt,
+    afterskip = 28pt,
+    tocline = \protect\numberline{\thechapter\hspace{.3em}}#2
+  },
+  section = {
+    format = \normalfont\large\bfseries,
+    number = {\textcolor{accent}{\thesection}},
+    beforeskip = 1.5em,
+    afterskip = 0.75em
+  },
+  subsection = {
+    format = \normalfont\normalsize\bfseries,
+    number = {\textcolor{accent}{\thesubsection}},
+    beforeskip = 1.2em,
+    afterskip = 0.5em
+  }
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textcolor{accent}{First-Order Methods}}
+\fancyhead[R]{\small\bfseries\nouppercase{\rightmark}}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\chaptermark}[1]{\markboth{第\thechapter 章\quad #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\quad #1}}
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\small\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}

@@ -1,0 +1,201 @@
+\numberwithin{equation}{chapter}
+
+\newtheoremstyle{plaincn}
+  {1em}
+  {1em}
+  {\normalfont}
+  {0pt}
+  {\bfseries\color{accent}}
+  {}
+  {\newline}
+  {\thmname{#1}\thmnumber{ #2}\thmnote{（#3）}}
+
+\newtheoremstyle{examplecn}
+  {1em}
+  {1em}
+  {\normalfont}
+  {0pt}
+  {\bfseries\color{greenaccent}}
+  {}
+  {\newline}
+  {\thmname{#1}\thmnumber{ #2}\thmnote{（#3）}}
+
+\newtheoremstyle{exercisecn}
+  {0.8em}
+  {0.8em}
+  {\normalfont}
+  {0pt}
+  {\bfseries}
+  {}
+  {0.5em}
+  {\thmname{#1}\thmnumber{ #2}\thmnote{（#3）}}
+
+\newtheoremstyle{remarkcn}
+  {0.9em}
+  {0.9em}
+  {\normalfont}
+  {0pt}
+  {\bfseries}
+  {}
+  {\newline}
+  {\thmname{#1}\thmnumber{ #2}\thmnote{（#3）}}
+
+\theoremstyle{plaincn}
+\newtheorem{theorem}{定理}[chapter]
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{corollary}[theorem]{推论}
+\newtheorem{proposition}[theorem]{命题}
+\newtheorem{assumption}[theorem]{假设}
+\newtheorem{definition}[theorem]{定义}
+\newtheorem{algorithm}[theorem]{算法}
+
+\theoremstyle{examplecn}
+\newtheorem{example}[theorem]{例}
+
+\theoremstyle{exercisecn}
+\newtheorem{exercise}[theorem]{练习}
+
+\theoremstyle{remarkcn}
+\newtheorem{remark}[theorem]{说明}
+
+\renewcommand{\proofname}{证明}
+\renewenvironment{proof}[1][\proofname]
+  {%
+    \par\vspace{0.55em}%
+    \begin{tcolorbox}[
+      enhanced,
+      breakable,
+      blanker,
+      borderline west={0.75pt}{0pt}{rulegray},
+      left=9pt,
+      right=0pt,
+      top=2pt,
+      bottom=2pt,
+      before skip=0pt,
+      after skip=0pt
+    ]%
+    \noindent\textit{#1.}\quad\ignorespaces
+  }
+  {%
+    \hfill$\square$%
+    \end{tcolorbox}%
+    \par\vspace{0.15em}%
+  }
+
+\newenvironment{solution}[1][解答]
+  {%
+    \par\vspace{0.55em}%
+    \begin{tcolorbox}[
+      enhanced,
+      breakable,
+      blanker,
+      borderline west={0.75pt}{0pt}{rulegray},
+      left=9pt,
+      right=0pt,
+      top=2pt,
+      bottom=2pt,
+      before skip=0pt,
+      after skip=0pt
+    ]%
+    \noindent\textit{#1.}\quad\ignorespaces
+  }
+  {%
+    \hfill$\square$%
+    \end{tcolorbox}%
+    \par\vspace{0.15em}%
+  }
+
+\tcbset{
+  statementbox/.style={
+    enhanced,
+    breakable,
+    colback=theoremback,
+    colframe=theoremback,
+    boxrule=0pt,
+    arc=2.2mm,
+    left=7pt,
+    right=7pt,
+    top=6pt,
+    bottom=6pt,
+    before skip=1em,
+    after skip=1em
+  },
+  examplebox/.style={
+    enhanced,
+    breakable,
+    colback=exampleback,
+    colframe=exampleback,
+    boxrule=0pt,
+    arc=1.5mm,
+    left=7pt,
+    right=7pt,
+    top=5pt,
+    bottom=5pt,
+    before skip=1em,
+    after skip=1em
+  },
+  exercisebox/.style={
+    enhanced,
+    breakable,
+    colback=exerciseback,
+    colframe=exerciseback,
+    boxrule=0pt,
+    arc=0mm,
+    left=7pt,
+    right=7pt,
+    top=5pt,
+    bottom=5pt,
+    before skip=0.9em,
+    after skip=0.9em
+  }
+}
+
+\tcolorboxenvironment{theorem}{statementbox}
+\tcolorboxenvironment{lemma}{statementbox}
+\tcolorboxenvironment{corollary}{statementbox}
+\tcolorboxenvironment{proposition}{statementbox}
+\tcolorboxenvironment{assumption}{statementbox}
+\tcolorboxenvironment{definition}{statementbox}
+\tcolorboxenvironment{algorithm}{statementbox}
+\tcolorboxenvironment{example}{examplebox}
+\tcolorboxenvironment{exercise}{exercisebox}
+
+\newcounter{note}[chapter]
+\renewcommand{\thenote}{\thechapter.\arabic{note}}
+\newenvironment{note}[1][]
+  {%
+    \refstepcounter{note}%
+    \begin{tcolorbox}[
+      breakable,
+      enhanced,
+      sharp corners,
+      colback=white,
+      colframe=white,
+      boxrule=0pt,
+      borderline west={0.8pt}{0pt}{rulegray},
+      left=10pt,
+      right=0pt,
+      top=3pt,
+      bottom=3pt,
+      before skip=1em,
+      after skip=1em,
+      title={笔记 \thenote\if\relax\detokenize{#1}\relax\else：#1\fi},
+      attach title to upper={\par\vspace{0.35em}},
+      coltitle=black,
+      fonttitle=\bfseries
+    ]%
+  }
+  {\end{tcolorbox}}
+
+\crefname{theorem}{定理}{定理}
+\crefname{lemma}{引理}{引理}
+\crefname{corollary}{推论}{推论}
+\crefname{proposition}{命题}{命题}
+\crefname{assumption}{假设}{假设}
+\crefname{definition}{定义}{定义}
+\crefname{example}{例}{例}
+\crefname{exercise}{练习}{练习}
+\crefname{algorithm}{算法}{算法}
+\crefname{remark}{说明}{说明}
+\crefname{note}{笔记}{笔记}
+\crefname{equation}{式}{式}
